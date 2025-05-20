@@ -11,10 +11,10 @@ import jakarta.persistence.ManyToOne;
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     private String titulo;
-    private int añopublicacion;
+    private String isbn;
+    private int anioPublicacion;
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
@@ -36,12 +36,20 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public int getAñopublicacion() {
-        return añopublicacion;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setAñopublicacion(int añopublicacion) {
-        this.añopublicacion = añopublicacion;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public int getAnioPublicacion() {
+        return anioPublicacion;
+    }
+
+    public void setAnioPublicacion(int anioPublicacion) {
+        this.anioPublicacion = anioPublicacion;
     }
 
     public Autor getAutor() {
