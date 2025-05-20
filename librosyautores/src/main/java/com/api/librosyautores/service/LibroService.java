@@ -2,6 +2,7 @@ package com.api.librosyautores.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.api.librosyautores.model.Libro;
@@ -57,5 +58,12 @@ public class LibroService {
         libroRepository.deleteById(id);
     }
 
-    
+    public List<Libro> BuscarLibros(String titulo, Integer anio, String sortBy, String order) {
+        Sort sort = Sort.unsorted();
+        if (sortBy != null && !sortBy.isEmpty()) {
+            sort = "desc".equalsIgnoreCase(order) ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        }
+        List<Libro> libros = libroRepository.findAll(sort);
+        return libros.stream().filter(l -> titulo == null || l.getTitulo().toLowerCase().contains(titulo.toLowerCase())).filter(l -> anio == null || l.getAnioPublicacion() == anio).toList();
+    }
 }
