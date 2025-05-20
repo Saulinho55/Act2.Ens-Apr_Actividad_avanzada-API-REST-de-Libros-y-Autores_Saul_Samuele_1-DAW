@@ -1,5 +1,9 @@
 package com.api.librosyautores.repository;
 
-public class LibroRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.api.librosyautores.model.Libro;
+
+public interface LibroRepository extends JpaRepository<Libro, Long> {
     
 }
