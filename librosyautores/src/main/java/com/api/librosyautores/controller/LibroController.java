@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,13 +40,13 @@ public class LibroController {
         return libroService.Crear(libro); // Crea un nuevo libro
     }
 
-    @PostMapping("/{id}") // Maneja peticiones POST a /api/v1/libros/{id} para actualizar
+    @PutMapping("/{id}") // Maneja peticiones POST a /api/v1/libros/{id} para actualizar
     public Libro Actualizar(@PathVariable Long id, @RequestBody Libro libroAct) {
         return libroService.Actualizar(id, libroAct); // Actualiza un libro existente
     }
 
     @DeleteMapping("/{id}") // Maneja peticiones DELETE a /api/v1/libros/{id}
-    public void Eliminar(Long id) {
+    public void Eliminar(@PathVariable Long id) {
         libroService.Eliminar(id); // Elimina un libro por su ID
     }
 
