@@ -53,7 +53,7 @@ public class LibroController {
     public List<Libro> BuscarLibros(
         @RequestParam(required = false) String titulo, // Filtro por título
         @RequestParam(required = false) Integer anio, // Filtro por año
-        @RequestParam(required = false) String sortBy, // Ordenar por campo
+        @RequestParam(required = false, defaultValue = "id") String sortBy, // Ordenar por campo
         @RequestParam(required = false, defaultValue = "asc") String order) // Orden ascendente/descendente
         {
         return libroService.BuscarLibros(titulo, anio, sortBy, order); // Busca libros según los filtros

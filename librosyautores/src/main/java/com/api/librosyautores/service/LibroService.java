@@ -73,9 +73,6 @@ public class LibroService {
         }
         List<Libro> libros = libroRepository.findAll(sort);
         // Filtra por título y año si se proporcionan
-        return libros.stream()
-            .filter(l -> titulo == null || l.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
-            .filter(l -> anio == null || l.getAnioPublicacion() == anio)
-            .toList();
+        return libros.stream().filter(l -> titulo == null || l.getTitulo().toLowerCase().contains(titulo.toLowerCase())).filter(l -> anio == null || l.getAnioPublicacion() == anio).toList();
     }
 }
