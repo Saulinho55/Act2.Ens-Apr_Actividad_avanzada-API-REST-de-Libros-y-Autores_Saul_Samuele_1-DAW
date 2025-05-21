@@ -40,7 +40,7 @@ public class LibroController {
         return libroService.Crear(libro); // Crea un nuevo libro
     }
 
-    @PutMapping("/{id}") // Maneja peticiones POST a /api/v1/libros/{id} para actualizar
+    @PutMapping("/{id}") // Maneja peticiones PUT a /api/v1/libros/{id} para actualizar
     public Libro Actualizar(@PathVariable Long id, @RequestBody Libro libroAct) {
         return libroService.Actualizar(id, libroAct); // Actualiza un libro existente
     }

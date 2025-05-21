@@ -3,7 +3,9 @@ package com.api.librosyautores.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,12 +28,12 @@ public class AutorController {
     }
 
     @GetMapping("/{id}") // Maneja peticiones GET a /api/v1/autores/{id}
-    public Autor BuscarPorAutor(Long id) {
+    public Autor BuscarPorAutor(@PathVariable Long id) {
         return autorService.BuscarPorAutor(id); // Busca un autor por su ID
     }
 
     @PostMapping // Maneja peticiones POST a /api/v1/autores
-    public Autor CrearAutor(Autor autor) {
+    public Autor CrearAutor(@RequestBody Autor autor) {
         return autorService.CrearAutor(autor); // Crea un nuevo autor
     }
 }
