@@ -1,6 +1,9 @@
 package com.api.librosyautores.model;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +20,7 @@ public class Autor {
     private String nacionalidad; // Nacionalidad del autor
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true) // Relación uno a muchos con Libro
+    @JsonManagedReference 
     private List<Libro> libros = new ArrayList<>(); // Lista de libros asociados al autor
 
     // Getter para id

@@ -1,5 +1,7 @@
 package com.api.librosyautores.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,7 @@ public class Libro {
     private int anioPublicacion; // Año de publicación
 
     @ManyToOne // Muchos libros pueden pertenecer a un autor
+    @JsonBackReference
     @JoinColumn(name = "autor_id") // Nombre de la columna de la clave foránea
     private Autor autor; // Autor al que pertenece el libro
 
